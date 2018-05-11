@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+  "name": "Sugar Athena",
+  "version": "1.0",
+  "description": "Functions as the sync link between Athena and Sugar until the API is ready",
+  "author": "Nick Fenzan",
+  "update_url": "http://miller.vein/extensions/sugar-athena/crx",
+  "background": {
+    "scripts": ["eventPage.js"],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://athenanet.athenahealth.com/*"
+      ],
+      "js": ["athena.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "*://sugar.millervein.com/sugar/*"
+      ],
+      "js": ["sugar.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "permissions": [
+    "http://*/",
+    "https://*/"
+  ]
+}
